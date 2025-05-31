@@ -45,11 +45,14 @@
     "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "clean": "rm -rf dist",
     "dev": "npm run build -- --watch",
+    "typecheck": "tsc --noEmit",
+    "check": "npm run typecheck && npm run test:coverage-check",
     "test": "vitest",
     "test:run": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
-    "prepublishOnly": "npm run test:run && npm run build"
+    "test:coverage-check": "vitest run --coverage --reporter=verbose",
+    "prepublishOnly": "npm run typecheck && npm run test:coverage-check && npm run build"
   },
   "keywords": [
     "utilities",
