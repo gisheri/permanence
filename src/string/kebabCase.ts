@@ -22,8 +22,10 @@ export function kebabCase(str: string): string {
   }
   
   return str
-    // Insert a hyphen before any uppercase letter that follows a lowercase letter
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
+    // Handle consecutive uppercase letters: XMLHttpRequest -> XML-Http-Request
+    .replace(/([A-Z]+)([A-Z][a-z])/g, '$1-$2')
+    // Insert a hyphen before any uppercase letter that follows a lowercase letter or number
+    .replace(/([a-z0-9])([A-Z])/g, '$1-$2')
     // Replace spaces and underscores with hyphens
     .replace(/[\s_]+/g, '-')
     // Convert to lowercase

@@ -7,29 +7,29 @@
   "types": "./dist/index.d.ts",
   "exports": {
     ".": {
+      "types": "./dist/index.d.ts",
       "import": "./dist/index.mjs",
-      "require": "./dist/index.js",
-      "types": "./dist/index.d.ts"
+      "require": "./dist/index.js"
     },
     "./string/capitalize": {
+      "types": "./dist/string/capitalize.d.ts",
       "import": "./dist/string/capitalize.mjs",
-      "require": "./dist/string/capitalize.js",
-      "types": "./dist/string/capitalize.d.ts"
+      "require": "./dist/string/capitalize.js"
     },
     "./string/kebabCase": {
+      "types": "./dist/string/kebabCase.d.ts",
       "import": "./dist/string/kebabCase.mjs",
-      "require": "./dist/string/kebabCase.js",
-      "types": "./dist/string/kebabCase.d.ts"
+      "require": "./dist/string/kebabCase.js"
     },
     "./object/omit": {
+      "types": "./dist/object/omit.d.ts",
       "import": "./dist/object/omit.mjs",
-      "require": "./dist/object/omit.js",
-      "types": "./dist/object/omit.d.ts"
+      "require": "./dist/object/omit.js"
     },
     "./object/pick": {
+      "types": "./dist/object/pick.d.ts",
       "import": "./dist/object/pick.mjs",
-      "require": "./dist/object/pick.js",
-      "types": "./dist/object/pick.d.ts"
+      "require": "./dist/object/pick.js"
     }
   },
   "files": [
@@ -40,12 +40,16 @@
   ],
   "scripts": {
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
-    "build:esm": "esbuild 'src/**/*.ts' --outdir=dist --format=esm --out-extension:.js=.mjs --tree-shaking=true --resolve-extensions=.ts,.js",
-    "build:cjs": "esbuild 'src/**/*.ts' --outdir=dist --format=cjs --tree-shaking=true",
+    "build:esm": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts --outdir=dist --format=esm --out-extension:.js=.mjs --tree-shaking=true --resolve-extensions=.ts,.js",
+    "build:cjs": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts --outdir=dist --format=cjs --tree-shaking=true",
     "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "clean": "rm -rf dist",
     "dev": "npm run build -- --watch",
-    "prepublishOnly": "npm run build"
+    "test": "vitest",
+    "test:run": "vitest run",
+    "test:ui": "vitest --ui",
+    "test:coverage": "vitest run --coverage",
+    "prepublishOnly": "npm run test:run && npm run build"
   },
   "keywords": [
     "utilities",
@@ -62,8 +66,11 @@
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^20.0.0",
+    "@vitest/coverage-v8": "^3.1.4",
+    "@vitest/ui": "^3.1.4",
     "esbuild": "^0.19.0",
-    "typescript": "^5.0.0"
+    "typescript": "^5.0.0",
+    "vitest": "^3.1.4"
   },
   "engines": {
     "node": ">=16"
