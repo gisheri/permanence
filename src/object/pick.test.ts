@@ -5,7 +5,7 @@ describe('pick', () => {
   it('should pick specified keys from an object', () => {
     const obj = { a: 1, b: 2, c: 3, d: 4 }
     const result = pick(obj, ['a', 'c'])
-    
+
     expect(result).toEqual({ a: 1, c: 3 })
     expect(result).toHaveProperty('a')
     expect(result).toHaveProperty('c')
@@ -17,7 +17,7 @@ describe('pick', () => {
     const obj = { a: 1, b: 2, c: 3 }
     const original = { ...obj }
     const result = pick(obj, ['a', 'b'])
-    
+
     expect(obj).toEqual(original)
     expect(result).not.toBe(obj)
   })
@@ -25,26 +25,29 @@ describe('pick', () => {
   it('should handle empty key arrays', () => {
     const obj = { a: 1, b: 2, c: 3 }
     const result = pick(obj, [])
-    
+
     expect(result).toEqual({})
   })
 
   it('should handle empty objects', () => {
+    //@ts-expect-error
     const result = pick({}, ['any', 'keys'])
     expect(result).toEqual({})
   })
 
   it('should handle non-existent keys', () => {
     const obj = { a: 1, b: 2 }
+    //@ts-expect-error
     const result = pick(obj, ['c', 'd'])
-    
+
     expect(result).toEqual({})
   })
 
   it('should handle mixed existing and non-existent keys', () => {
     const obj = { a: 1, b: 2, c: 3 }
+    //@ts-expect-error
     const result = pick(obj, ['a', 'nonexistent', 'c'])
-    
+
     expect(result).toEqual({ a: 1, c: 3 })
   })
 
@@ -57,9 +60,9 @@ describe('pick', () => {
       metadata: null,
       isActive: true
     }
-    
+
     const result = pick(obj, ['name', 'address', 'isActive'])
-    
+
     expect(result).toEqual({
       name: 'John',
       address: { street: '123 Main St', city: 'Boston' },
@@ -74,9 +77,9 @@ describe('pick', () => {
       email: 'john@example.com',
       password: 'secret'
     }
-    
+
     const publicUser = pick(user, ['id', 'name'])
-    
+
     // Type should be { id: number; name: string }
     expect(publicUser).toEqual({
       id: 1,
@@ -87,7 +90,7 @@ describe('pick', () => {
   it('should handle objects with undefined and null values', () => {
     const obj = { a: 1, b: undefined, c: null, d: 'test' }
     const result = pick(obj, ['a', 'b', 'c'])
-    
+
     expect(result).toEqual({ a: 1, b: undefined, c: null })
   })
 
@@ -95,7 +98,7 @@ describe('pick', () => {
     const sym = Symbol('test')
     const obj = { a: 1, b: 2, [sym]: 'symbol value' }
     const result = pick(obj, ['a'])
-    
+
     expect(result).toEqual({ a: 1 })
     expect(Object.getOwnPropertySymbols(result)).toHaveLength(0)
   })
@@ -103,7 +106,7 @@ describe('pick', () => {
   it('should handle picking all keys', () => {
     const obj = { a: 1, b: 2, c: 3 }
     const result = pick(obj, ['a', 'b', 'c'])
-    
+
     expect(result).toEqual(obj)
     expect(result).not.toBe(obj) // Should still be a new object
   })
@@ -120,7 +123,7 @@ describe('pick', () => {
       lastLogin: '2025-05-31',
       createdAt: '2025-01-15'
     }
-    
+
     // API response fields
     const apiResponse = pick(userProfile, ['id', 'username', 'email', 'role'])
     expect(apiResponse).toEqual({
@@ -129,7 +132,7 @@ describe('pick', () => {
       email: 'john@example.com',
       role: 'admin'
     })
-    
+
     // Display name fields
     const displayData = pick(userProfile, ['firstName', 'lastName', 'username'])
     expect(displayData).toEqual({

@@ -21,15 +21,15 @@
  * 
  * @public
  */
-export function omit<T extends Record<string, any>, K extends keyof T>(
+export function omit<T extends Record<string, any>, K extends (keyof T)[]>(
   obj: T,
-  keys: K[]
-): Omit<T, K> {
+  keys: K
+): Omit<T, K[number]> {
   const result = { ...obj };
   
   for (const key of keys) {
     delete result[key];
   }
-  
-  return result as Omit<T, K>;
+
+  return result as Omit<T, K[number]>;
 }

@@ -29,12 +29,14 @@ describe('omit', () => {
   })
 
   it('should handle empty objects', () => {
+    //@ts-expect-error
     const result = omit({}, ['any', 'keys'])
     expect(result).toEqual({})
   })
 
   it('should handle non-existent keys', () => {
     const obj = { a: 1, b: 2 }
+    //@ts-expect-error
     const result = omit(obj, ['c', 'd'])
     
     expect(result).toEqual({ a: 1, b: 2 })
@@ -42,6 +44,7 @@ describe('omit', () => {
 
   it('should handle mixed existing and non-existent keys', () => {
     const obj = { a: 1, b: 2, c: 3 }
+    //@ts-expect-error
     const result = omit(obj, ['b', 'nonexistent', 'c'])
     
     expect(result).toEqual({ a: 1 })
