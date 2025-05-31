@@ -1,0 +1,74 @@
+{
+  "name": "@permanence/core",
+  "version": "0.1.0",
+  "description": "A suite of utility packages that never change",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./string/capitalize": {
+      "import": "./dist/string/capitalize.mjs",
+      "require": "./dist/string/capitalize.js",
+      "types": "./dist/string/capitalize.d.ts"
+    },
+    "./string/kebabCase": {
+      "import": "./dist/string/kebabCase.mjs",
+      "require": "./dist/string/kebabCase.js",
+      "types": "./dist/string/kebabCase.d.ts"
+    },
+    "./object/omit": {
+      "import": "./dist/object/omit.mjs",
+      "require": "./dist/object/omit.js",
+      "types": "./dist/object/omit.d.ts"
+    },
+    "./object/pick": {
+      "import": "./dist/object/pick.mjs",
+      "require": "./dist/object/pick.js",
+      "types": "./dist/object/pick.d.ts"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
+    "build:esm": "esbuild 'src/**/*.ts' --outdir=dist --format=esm --out-extension:.js=.mjs --tree-shaking=true --resolve-extensions=.ts,.js",
+    "build:cjs": "esbuild 'src/**/*.ts' --outdir=dist --format=cjs --tree-shaking=true",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist",
+    "clean": "rm -rf dist",
+    "dev": "npm run build -- --watch",
+    "prepublishOnly": "npm run build"
+  },
+  "keywords": [
+    "utilities",
+    "typescript",
+    "tree-shakeable",
+    "functional",
+    "string",
+    "object",
+    "lodash",
+    "ramda",
+    "zero-dependencies"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "esbuild": "^0.19.0",
+    "typescript": "^5.0.0"
+  },
+  "engines": {
+    "node": ">=16"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
