@@ -5,6 +5,54 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.3.0] - 2025-05-31
+
+### Added
+
+#### Array Functions
+- `union<T>(...arrays: readonly (readonly T[])[]): T[]` - Creates an array of unique values from all given arrays, in order of first occurrence
+
+#### Utility Functions
+- `cloneDeep<T>(value: T): T` - Creates a deep clone of the given value. Supports primitives, arrays, objects, Date, RegExp, and nested structures
+
+### Changed
+- Updated package exports to include new utility functions
+- Enhanced build scripts to compile new functions
+- Added bundlesize monitoring for new functions (union: 300B, cloneDeep: 600B)
+- Updated documentation with comprehensive examples for new functions
+
+### Development
+- ✅ Maintained 100% test coverage with comprehensive test suites for new functions
+- ✅ All functions properly typed and documented with JSDoc
+- ✅ Tree-shakeable individual imports support maintained
+
+## [0.2.0] - 2025-05-31
+
+### Added
+
+#### Array Functions
+- `chunk<T>(array: readonly T[], size: number): T[][]` - Split arrays into chunks of specified size
+- `compact<T>(array: readonly (T | null | undefined | false | 0 | '')[]): T[]` - Remove all falsy values from an array
+
+#### Type Functions
+- `isNil(value: unknown): value is null | undefined` - Check if a value is null or undefined with type guard
+
+#### Function Functions
+- `debounce<TArgs>(func: (...args: TArgs) => void, wait: number): (...args: TArgs) => void` - Delay function execution until after wait milliseconds
+
+### Changed
+- Enhanced TypeScript types (replaced `any` with `unknown` where appropriate)
+- Updated package.json with ES module type and proper exports order
+- Improved build process to include all new utility functions
+
+### Development
+- ✅ Added ESLint with TypeScript support and custom rules
+- ✅ Added Prettier for consistent code formatting
+- ✅ Added bundlesize monitoring for performance tracking
+- ✅ Added GitHub Actions CI/CD workflow
+- ✅ Enhanced test coverage to 74 tests with 100% coverage enforcement
+- ✅ Added comprehensive development documentation (CONTRIBUTING.md, COVERAGE.md, PUBLISHING.md)
+
 ## [0.1.0] - 2025-05-31
 
 ### Added

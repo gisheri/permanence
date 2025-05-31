@@ -1,7 +1,8 @@
 {
   "name": "@permanence/core",
-  "version": "0.1.0",
+  "version": "0.3.0",
   "description": "A suite of utility packages that never change",
+  "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -30,6 +31,36 @@
       "types": "./dist/object/pick.d.ts",
       "import": "./dist/object/pick.mjs",
       "require": "./dist/object/pick.js"
+    },
+    "./array/chunk": {
+      "types": "./dist/array/chunk.d.ts",
+      "import": "./dist/array/chunk.mjs",
+      "require": "./dist/array/chunk.js"
+    },
+    "./array/compact": {
+      "types": "./dist/array/compact.d.ts",
+      "import": "./dist/array/compact.mjs",
+      "require": "./dist/array/compact.js"
+    },
+    "./type/isNil": {
+      "types": "./dist/type/isNil.d.ts",
+      "import": "./dist/type/isNil.mjs",
+      "require": "./dist/type/isNil.js"
+    },
+    "./function/debounce": {
+      "types": "./dist/function/debounce.d.ts",
+      "import": "./dist/function/debounce.mjs",
+      "require": "./dist/function/debounce.js"
+    },
+    "./array/union": {
+      "types": "./dist/array/union.d.ts",
+      "import": "./dist/array/union.mjs",
+      "require": "./dist/array/union.js"
+    },
+    "./utility/cloneDeep": {
+      "types": "./dist/utility/cloneDeep.d.ts",
+      "import": "./dist/utility/cloneDeep.mjs",
+      "require": "./dist/utility/cloneDeep.js"
     }
   },
   "files": [
@@ -40,18 +71,23 @@
   ],
   "scripts": {
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
-    "build:esm": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts --outdir=dist --format=esm --out-extension:.js=.mjs --tree-shaking=true --resolve-extensions=.ts,.js",
-    "build:cjs": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts --outdir=dist --format=cjs --tree-shaking=true",
+    "build:esm": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts src/array/chunk.ts src/array/compact.ts src/array/union.ts src/type/isNil.ts src/function/debounce.ts src/utility/cloneDeep.ts --outdir=dist --format=esm --out-extension:.js=.mjs --tree-shaking=true --resolve-extensions=.ts,.js",
+    "build:cjs": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts src/array/chunk.ts src/array/compact.ts src/array/union.ts src/type/isNil.ts src/function/debounce.ts src/utility/cloneDeep.ts --outdir=dist --format=cjs --tree-shaking=true",
     "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "clean": "rm -rf dist",
     "dev": "npm run build -- --watch",
     "typecheck": "tsc --noEmit",
-    "check": "npm run typecheck && npm run test:coverage-check",
+    "lint": "eslint src --ext .ts",
+    "lint:fix": "eslint src --ext .ts --fix",
+    "format": "prettier --write src/**/*.ts",
+    "format:check": "prettier --check src/**/*.ts",
+    "check": "npm run typecheck && npm run lint && npm run test:coverage-check",
     "test": "vitest",
     "test:run": "vitest run",
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "test:coverage-check": "vitest run --coverage --reporter=verbose",
+    "bundlesize": "bundlesize",
     "prepublishOnly": "npm run typecheck && npm run test:coverage-check && npm run build"
   },
   "keywords": [
@@ -68,10 +104,16 @@
   "author": "Your Name",
   "license": "MIT",
   "devDependencies": {
+    "@types/eslint": "^9.6.1",
     "@types/node": "^20.0.0",
+    "@typescript-eslint/eslint-plugin": "^8.33.0",
+    "@typescript-eslint/parser": "^8.33.0",
     "@vitest/coverage-v8": "^3.1.4",
     "@vitest/ui": "^3.1.4",
+    "bundlesize": "^0.18.2",
     "esbuild": "^0.19.0",
+    "eslint": "^9.28.0",
+    "prettier": "^3.5.3",
     "typescript": "^5.0.0",
     "vitest": "^3.1.4"
   },
@@ -80,5 +122,47 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "bundlesize": [
+    {
+      "path": "./dist/string/capitalize.mjs",
+      "maxSize": "200B"
+    },
+    {
+      "path": "./dist/string/kebabCase.mjs", 
+      "maxSize": "300B"
+    },
+    {
+      "path": "./dist/object/omit.mjs",
+      "maxSize": "200B"
+    },
+    {
+      "path": "./dist/object/pick.mjs",
+      "maxSize": "200B"
+    },
+    {
+      "path": "./dist/array/chunk.mjs",
+      "maxSize": "300B"
+    },
+    {
+      "path": "./dist/array/compact.mjs",
+      "maxSize": "200B"
+    },
+    {
+      "path": "./dist/type/isNil.mjs",
+      "maxSize": "150B"
+    },
+    {
+      "path": "./dist/function/debounce.mjs",
+      "maxSize": "400B"
+    },
+    {
+      "path": "./dist/array/union.mjs",
+      "maxSize": "300B"
+    },
+    {
+      "path": "./dist/utility/cloneDeep.mjs",
+      "maxSize": "600B"
+    }
+  ]
 }
