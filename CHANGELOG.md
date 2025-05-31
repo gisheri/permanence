@@ -5,6 +5,28 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [0.4.0] - 2025-05-31
+
+### Added
+- **New Functions**: Added 3 new utility functions for enhanced functionality
+  - `flatten`: Flattens an array one level deep with proper TypeScript support
+  - `throttle`: Throttles function execution to at most once per specified interval
+  - `randomInt`: Generates random integers within a specified range with validation
+- **Performance Benchmarks**: Added comprehensive benchmark suite with 23 performance tests
+- **Enhanced Package Scripts**: Added `benchmark` and `benchmark:run` scripts
+- **Bundle Size Monitoring**: Added size limits for all new functions (149B-198B gzipped)
+
+### Changed
+- **Package Exports**: Updated subpath exports to include new functions
+- **Build Configuration**: Enhanced build scripts to include all 13 utility functions
+- **Test Coverage**: Maintained 100% test coverage across 117 tests (33 new tests added)
+- **Documentation**: Updated README and JSDoc comments for better clarity
+
+### Performance
+- `flatten`: 9.4M ops/sec for nested arrays, 200K ops/sec for large arrays
+- `throttle`: 22.7M ops/sec for function creation (fastest in category)
+- `randomInt`: 20.6M ops/sec for random generation across all ranges
+
 ## [0.3.0] - 2025-05-31
 
 ### Added

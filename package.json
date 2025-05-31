@@ -1,6 +1,6 @@
 {
   "name": "@permanence/core",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "description": "A suite of utility packages that never change",
   "type": "module",
   "main": "./dist/index.js",
@@ -61,6 +61,21 @@
       "types": "./dist/utility/cloneDeep.d.ts",
       "import": "./dist/utility/cloneDeep.mjs",
       "require": "./dist/utility/cloneDeep.js"
+    },
+    "./array/flatten": {
+      "types": "./dist/array/flatten.d.ts",
+      "import": "./dist/array/flatten.mjs",
+      "require": "./dist/array/flatten.js"
+    },
+    "./function/throttle": {
+      "types": "./dist/function/throttle.d.ts",
+      "import": "./dist/function/throttle.mjs",
+      "require": "./dist/function/throttle.js"
+    },
+    "./math/randomInt": {
+      "types": "./dist/math/randomInt.d.ts",
+      "import": "./dist/math/randomInt.mjs",
+      "require": "./dist/math/randomInt.js"
     }
   },
   "files": [
@@ -71,8 +86,8 @@
   ],
   "scripts": {
     "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
-    "build:esm": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts src/array/chunk.ts src/array/compact.ts src/array/union.ts src/type/isNil.ts src/function/debounce.ts src/utility/cloneDeep.ts --outdir=dist --format=esm --out-extension:.js=.mjs --tree-shaking=true --resolve-extensions=.ts,.js",
-    "build:cjs": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts src/array/chunk.ts src/array/compact.ts src/array/union.ts src/type/isNil.ts src/function/debounce.ts src/utility/cloneDeep.ts --outdir=dist --format=cjs --tree-shaking=true",
+    "build:esm": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts src/array/chunk.ts src/array/compact.ts src/array/union.ts src/array/flatten.ts src/type/isNil.ts src/function/debounce.ts src/function/throttle.ts src/math/randomInt.ts src/utility/cloneDeep.ts --outdir=dist --format=esm --out-extension:.js=.mjs --tree-shaking=true --resolve-extensions=.ts,.js",
+    "build:cjs": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts src/array/chunk.ts src/array/compact.ts src/array/union.ts src/array/flatten.ts src/type/isNil.ts src/function/debounce.ts src/function/throttle.ts src/math/randomInt.ts src/utility/cloneDeep.ts --outdir=dist --format=cjs --tree-shaking=true",
     "build:types": "tsc --emitDeclarationOnly --outDir dist",
     "clean": "rm -rf dist",
     "dev": "npm run build -- --watch",
@@ -87,6 +102,8 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "test:coverage-check": "vitest run --coverage --reporter=verbose",
+    "benchmark": "vitest bench",
+    "benchmark:run": "vitest bench --run",
     "bundlesize": "bundlesize",
     "prepublishOnly": "npm run typecheck && npm run test:coverage-check && npm run build"
   },
@@ -163,6 +180,18 @@
     {
       "path": "./dist/utility/cloneDeep.mjs",
       "maxSize": "600B"
+    },
+    {
+      "path": "./dist/array/flatten.mjs",
+      "maxSize": "250B"
+    },
+    {
+      "path": "./dist/function/throttle.mjs",
+      "maxSize": "300B"
+    },
+    {
+      "path": "./dist/math/randomInt.mjs",
+      "maxSize": "250B"
     }
   ]
 }

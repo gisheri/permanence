@@ -1,6 +1,15 @@
 # @permanence/core
 
-A suite of tiny utility functions with zero dependencies that will never have a backward incompatible change. Fully tree-shakeable, fully typed, with comprehensive JSDoc comments.
+[![npm version](https://img.shields.io/npm/v/@permanence/core.svg)](https://www.npmjs.com/package/@permanence/core)
+[![npm downloads](https://img.shields.io/npm/dm/@permanence/core.svg)](https://www.npmjs.com/package/@permanence/core)
+[![CI](https://github.com/your-username/permanence/workflows/CI/badge.svg)](https://github.com/your-username/permanence/actions)
+[![Coverage](https://img.shields.io/badge/coverage-100%25-brightgreen.svg)](https://github.com/your-username/permanence)
+[![Bundle Size](https://img.shields.io/bundlejs/size/@permanence/core)](https://bundlejs.com/?q=@permanence/core)
+[![TypeScript](https://img.shields.io/badge/TypeScript-Ready-blue.svg)](https://www.typescriptlang.org/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Security](https://img.shields.io/badge/Security-Policy-blue.svg)](SECURITY.md)
+
+A suite of **13 utility functions** with zero dependencies that will never have a backward incompatible change. Fully tree-shakeable, fully typed, with comprehensive JSDoc comments and performance benchmarks.
 
 ## Installation
 
@@ -26,6 +35,7 @@ import { pick } from '@permanence/core/object/pick';
 // Array utilities
 import { chunk } from '@permanence/core/array/chunk';
 import { compact } from '@permanence/core/array/compact';
+import { flatten } from '@permanence/core/array/flatten';
 import { union } from '@permanence/core/array/union';
 
 // Type utilities
@@ -33,6 +43,10 @@ import { isNil } from '@permanence/core/type/isNil';
 
 // Function utilities
 import { debounce } from '@permanence/core/function/debounce';
+import { throttle } from '@permanence/core/function/throttle';
+
+// Math utilities
+import { randomInt } from '@permanence/core/math/randomInt';
 
 // Utility functions
 import { cloneDeep } from '@permanence/core/utility/cloneDeep';
@@ -56,9 +70,12 @@ import {
   pick, 
   chunk, 
   compact, 
+  flatten,
   union,
   isNil, 
   debounce,
+  throttle,
+  randomInt,
   cloneDeep
 } from '@permanence/core';
 

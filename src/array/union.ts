@@ -20,7 +20,7 @@
  * 
  * @public
  */
-export function union<T>(...arrays: readonly (readonly T[])[]): T[] {
+export function union<T>(...arrays: T[][]): T[] {
   const seen = new Set<T>();
   const result: T[] = [];
 

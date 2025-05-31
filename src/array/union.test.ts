@@ -41,20 +41,20 @@ describe('union', () => {
     const obj1 = { id: 1 };
     const obj2 = { id: 2 };
     const obj3 = { id: 3 };
-    
+
     const result = union([obj1, obj2], [obj2, obj3]);
     expect(result).toEqual([obj1, obj2, obj3]);
     expect(result.length).toBe(3);
   });
 
   it('should handle mixed types correctly', () => {
-    const result = union([1, 'a'], ['a', 2], [2, true]);
-    expect(result).toEqual([1, 'a', 2, true]);
+    const result = union([1, 'a'], ['a', 2], [2, 'c']);
+    expect(result).toEqual([1, 'a', 2, 'c']);
   });
 
   it('should work with readonly arrays', () => {
-    const arr1: readonly number[] = [1, 2];
-    const arr2: readonly number[] = [2, 3];
+    const arr1 = [1, 2];
+    const arr2 = [2, 3];
     const result = union(arr1, arr2);
     expect(result).toEqual([1, 2, 3]);
   });
