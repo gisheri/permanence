@@ -1,0 +1,46 @@
+{
+  "name": "@permanence/array",
+  "version": "0.4.0",
+  "description": "Array utility functions that never change",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "utilities",
+    "typescript",
+    "tree-shakeable",
+    "functional",
+    "array",
+    "permanence"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@permanence/chunk": "*",
+    "@permanence/compact": "*",
+    "@permanence/flatten": "*",
+    "@permanence/union": "*",
+    "tslib": "^2.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/permanence.git",
+    "directory": "packages/array"
+  }
+}

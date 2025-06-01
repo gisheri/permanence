@@ -1,83 +1,12 @@
 {
-  "name": "@permanence/core",
+  "name": "@permanence/monorepo",
   "version": "0.4.0",
   "description": "A suite of utility packages that never change",
+  "private": true,
   "type": "module",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "exports": {
-    ".": {
-      "types": "./dist/index.d.ts",
-      "import": "./dist/index.mjs",
-      "require": "./dist/index.js"
-    },
-    "./string/capitalize": {
-      "types": "./dist/string/capitalize.d.ts",
-      "import": "./dist/string/capitalize.mjs",
-      "require": "./dist/string/capitalize.js"
-    },
-    "./string/kebabCase": {
-      "types": "./dist/string/kebabCase.d.ts",
-      "import": "./dist/string/kebabCase.mjs",
-      "require": "./dist/string/kebabCase.js"
-    },
-    "./object/omit": {
-      "types": "./dist/object/omit.d.ts",
-      "import": "./dist/object/omit.mjs",
-      "require": "./dist/object/omit.js"
-    },
-    "./object/pick": {
-      "types": "./dist/object/pick.d.ts",
-      "import": "./dist/object/pick.mjs",
-      "require": "./dist/object/pick.js"
-    },
-    "./array/chunk": {
-      "types": "./dist/array/chunk.d.ts",
-      "import": "./dist/array/chunk.mjs",
-      "require": "./dist/array/chunk.js"
-    },
-    "./array/compact": {
-      "types": "./dist/array/compact.d.ts",
-      "import": "./dist/array/compact.mjs",
-      "require": "./dist/array/compact.js"
-    },
-    "./type/isNil": {
-      "types": "./dist/type/isNil.d.ts",
-      "import": "./dist/type/isNil.mjs",
-      "require": "./dist/type/isNil.js"
-    },
-    "./function/debounce": {
-      "types": "./dist/function/debounce.d.ts",
-      "import": "./dist/function/debounce.mjs",
-      "require": "./dist/function/debounce.js"
-    },
-    "./array/union": {
-      "types": "./dist/array/union.d.ts",
-      "import": "./dist/array/union.mjs",
-      "require": "./dist/array/union.js"
-    },
-    "./utility/cloneDeep": {
-      "types": "./dist/utility/cloneDeep.d.ts",
-      "import": "./dist/utility/cloneDeep.mjs",
-      "require": "./dist/utility/cloneDeep.js"
-    },
-    "./array/flatten": {
-      "types": "./dist/array/flatten.d.ts",
-      "import": "./dist/array/flatten.mjs",
-      "require": "./dist/array/flatten.js"
-    },
-    "./function/throttle": {
-      "types": "./dist/function/throttle.d.ts",
-      "import": "./dist/function/throttle.mjs",
-      "require": "./dist/function/throttle.js"
-    },
-    "./math/randomInt": {
-      "types": "./dist/math/randomInt.d.ts",
-      "import": "./dist/math/randomInt.mjs",
-      "require": "./dist/math/randomInt.js"
-    }
-  },
+  "workspaces": [
+    "packages/*"
+  ],
   "files": [
     "dist",
     "README.md",
@@ -85,27 +14,26 @@
     "CHANGELOG.md"
   ],
   "scripts": {
-    "build": "npm run clean && npm run build:esm && npm run build:cjs && npm run build:types",
-    "build:esm": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts src/array/chunk.ts src/array/compact.ts src/array/union.ts src/array/flatten.ts src/type/isNil.ts src/function/debounce.ts src/function/throttle.ts src/math/randomInt.ts src/utility/cloneDeep.ts --outdir=dist --format=esm --out-extension:.js=.mjs --tree-shaking=true --resolve-extensions=.ts,.js",
-    "build:cjs": "esbuild src/index.ts src/string/capitalize.ts src/string/kebabCase.ts src/object/omit.ts src/object/pick.ts src/array/chunk.ts src/array/compact.ts src/array/union.ts src/array/flatten.ts src/type/isNil.ts src/function/debounce.ts src/function/throttle.ts src/math/randomInt.ts src/utility/cloneDeep.ts --outdir=dist --format=cjs --tree-shaking=true",
-    "build:types": "tsc --emitDeclarationOnly --outDir dist",
-    "clean": "rm -rf dist",
-    "dev": "npm run build -- --watch",
-    "typecheck": "tsc --noEmit",
-    "lint": "eslint src --ext .ts",
-    "lint:fix": "eslint src --ext .ts --fix",
-    "format": "prettier --write src/**/*.ts",
-    "format:check": "prettier --check src/**/*.ts",
-    "check": "npm run typecheck && npm run lint && npm run test:coverage-check",
-    "test": "vitest",
-    "test:run": "vitest run",
-    "test:ui": "vitest --ui",
-    "test:coverage": "vitest run --coverage",
-    "test:coverage-check": "vitest run --coverage --reporter=verbose",
-    "benchmark": "vitest bench",
-    "benchmark:run": "vitest bench --run",
-    "bundlesize": "bundlesize",
-    "prepublishOnly": "npm run typecheck && npm run test:coverage-check && npm run build"
+    "build": "nx run-many -t build",
+    "clean": "nx run-many -t clean",
+    "dev": "nx run-many -t dev",
+    "typecheck": "nx run-many -t typecheck",
+    "lint": "nx run-many -t lint",
+    "lint:fix": "nx run-many -t lint:fix",
+    "format": "nx run-many -t format",
+    "format:check": "nx run-many -t format:check",
+    "check": "nx run-many -t check",
+    "test": "nx run-many -t test",
+    "test:run": "nx run-many -t test:run",
+    "test:coverage": "nx run-many -t test:coverage",
+    "test:coverage-check": "nx run-many -t test:coverage-check",
+    "benchmark": "nx run-many -t benchmark",
+    "benchmark:run": "nx run-many -t benchmark:run",
+    "bundlesize": "nx run-many -t bundlesize",
+    "version-packages": "nx release version",
+    "publish-packages": "nx release publish",
+    "release": "nx run-many -t build && nx release --skip-publish && nx release publish",
+    "generate-packages": "node scripts/generate-packages.js"
   },
   "keywords": [
     "utilities",
@@ -121,6 +49,15 @@
   "author": "Your Name",
   "license": "MIT",
   "devDependencies": {
+    "@eslint/js": "~8.57.0",
+    "@nx/eslint": "21.1.2",
+    "@nx/eslint-plugin": "21.1.2",
+    "@nx/js": "^21.1.2",
+    "@nx/vite": "21.1.2",
+    "@nx/web": "21.1.2",
+    "@swc-node/register": "~1.9.1",
+    "@swc/core": "~1.5.7",
+    "@swc/helpers": "~0.5.11",
     "@types/eslint": "^9.6.1",
     "@types/node": "^20.0.0",
     "@typescript-eslint/eslint-plugin": "^8.33.0",
@@ -130,8 +67,17 @@
     "bundlesize": "^0.18.2",
     "esbuild": "^0.19.0",
     "eslint": "^9.28.0",
+    "jiti": "2.4.2",
+    "jsdom": "~22.1.0",
+    "jsonc-eslint-parser": "^2.1.0",
+    "nx": "21.1.2",
     "prettier": "^3.5.3",
-    "typescript": "^5.0.0",
+    "tslib": "^2.3.0",
+    "typescript": "~5.7.2",
+    "typescript-eslint": "^8.33.0",
+    "verdaccio": "^6.0.5",
+    "vite": "^6.0.0",
+    "vite-plugin-dts": "~4.5.0",
     "vitest": "^3.1.4"
   },
   "engines": {
@@ -140,58 +86,8 @@
   "publishConfig": {
     "access": "public"
   },
-  "bundlesize": [
-    {
-      "path": "./dist/string/capitalize.mjs",
-      "maxSize": "200B"
-    },
-    {
-      "path": "./dist/string/kebabCase.mjs", 
-      "maxSize": "300B"
-    },
-    {
-      "path": "./dist/object/omit.mjs",
-      "maxSize": "200B"
-    },
-    {
-      "path": "./dist/object/pick.mjs",
-      "maxSize": "200B"
-    },
-    {
-      "path": "./dist/array/chunk.mjs",
-      "maxSize": "300B"
-    },
-    {
-      "path": "./dist/array/compact.mjs",
-      "maxSize": "200B"
-    },
-    {
-      "path": "./dist/type/isNil.mjs",
-      "maxSize": "150B"
-    },
-    {
-      "path": "./dist/function/debounce.mjs",
-      "maxSize": "400B"
-    },
-    {
-      "path": "./dist/array/union.mjs",
-      "maxSize": "300B"
-    },
-    {
-      "path": "./dist/utility/cloneDeep.mjs",
-      "maxSize": "600B"
-    },
-    {
-      "path": "./dist/array/flatten.mjs",
-      "maxSize": "250B"
-    },
-    {
-      "path": "./dist/function/throttle.mjs",
-      "maxSize": "300B"
-    },
-    {
-      "path": "./dist/math/randomInt.mjs",
-      "maxSize": "250B"
-    }
-  ]
+  "nx": {
+    "includedScripts": []
+  },
+  "dependencies": {}
 }

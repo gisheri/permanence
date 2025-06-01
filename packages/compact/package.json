@@ -1,0 +1,44 @@
+{
+  "name": "@permanence/compact",
+  "version": "0.0.1",
+  "description": "compact utility that never changes",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "require": "./index.cjs"
+    }
+  },
+  "main": "./index.js",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "index.cjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "compact",
+    "array",
+    "utilities",
+    "typescript",
+    "tree-shakeable"
+  ],
+  "homepage": "https://github.com/yourusername/permanence#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/permanence.git",
+    "directory": "packages/compact"
+  },
+  "bugs": "https://github.com/yourusername/permanence/issues",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "vitest": "^3.1.4"
+  }
+}

@@ -1,0 +1,23 @@
+{
+  "name": "capitalize",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "packages/capitalize/src",
+  "projectType": "library",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/packages/capitalize",
+        "main": "packages/capitalize/src/index.ts",
+        "tsConfig": "packages/capitalize/tsconfig.lib.json",
+        "assets": [
+          "packages/capitalize/*.md"
+        ]
+      }
+    }
+  },
+  "tags": []
+}

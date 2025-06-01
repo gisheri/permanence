@@ -1,0 +1,53 @@
+{
+  "name": "@permanence/all",
+  "version": "0.4.0",
+  "description": "A comprehensive suite of utility functions that never change",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js", 
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "utilities",
+    "typescript",
+    "tree-shakeable",
+    "functional",
+    "permanence"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "@permanence/capitalize": "^0.4.0",
+    "@permanence/kebabCase": "0.0.1",
+    "@permanence/omit": "0.0.1",
+    "@permanence/pick": "0.0.1",
+    "@permanence/chunk": "0.0.1",
+    "@permanence/compact": "0.0.1",
+    "@permanence/flatten": "0.0.1",
+    "@permanence/union": "0.0.1",
+    "@permanence/isNil": "0.0.1",
+    "@permanence/debounce": "0.0.1",
+    "@permanence/throttle": "0.0.1",
+    "@permanence/randomInt": "0.0.1",
+    "@permanence/cloneDeep": "0.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/permanence.git",
+    "directory": "packages/all"
+  }
+}

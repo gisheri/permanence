@@ -1,0 +1,42 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "esnext",
+    "lib": ["es2020", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@self/all": ["packages/all/src/index.ts"],
+      "@self/array": ["packages/array/src/index.ts"],
+      "@self/capitalize": ["packages/capitalize/src/index.ts"],
+      "@self/chunk": ["packages/chunk/src/index.ts"],
+      "@self/cloneDeep": ["packages/cloneDeep/src/index.ts"],
+      "@self/compact": ["packages/compact/src/index.ts"],
+      "@self/debounce": ["packages/debounce/src/index.ts"],
+      "@self/flatten": ["packages/flatten/src/index.ts"],
+      "@self/function": ["packages/function/src/index.ts"],
+      "@self/isNil": ["packages/isNil/src/index.ts"],
+      "@self/kebabCase": ["packages/kebabCase/src/index.ts"],
+      "@self/math": ["packages/math/src/index.ts"],
+      "@self/object": ["packages/object/src/index.ts"],
+      "@self/omit": ["packages/omit/src/index.ts"],
+      "@self/pick": ["packages/pick/src/index.ts"],
+      "@self/randomInt": ["packages/randomInt/src/index.ts"],
+      "@self/string": ["packages/string/src/index.ts"],
+      "@self/throttle": ["packages/throttle/src/index.ts"],
+      "@self/type": ["packages/type/src/index.ts"],
+      "@self/union": ["packages/union/src/index.ts"],
+      "@self/utility": ["packages/utility/src/index.ts"]
+    }
+  },
+  "exclude": ["node_modules", "dist"]
+}

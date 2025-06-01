@@ -1,0 +1,44 @@
+{
+  "name": "@permanence/type",
+  "version": "0.0.1",
+  "description": "Type checking utilities that never change",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "require": "./index.cjs"
+    }
+  },
+  "main": "./index.js",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "index.cjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "type",
+    "utilities",
+    "typescript",
+    "tree-shakeable",
+    "isNil"
+  ],
+  "homepage": "https://github.com/yourusername/permanence#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/permanence.git",
+    "directory": "packages/type"
+  },
+  "bugs": "https://github.com/yourusername/permanence/issues",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@permanence/isNil": "0.0.1"
+  }
+}

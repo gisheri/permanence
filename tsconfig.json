@@ -15,7 +15,19 @@
     "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
     "esModuleInterop": true,
-    "allowSyntheticDefaultImports": true
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": ".",
+    "paths": {
+      "@permanence/all": [
+        "packages/all/src/index.ts"
+      ],
+      "@permanence/array": [
+        "packages/array/src/index.ts"
+      ],
+      "@permanence/capitalize": [
+        "packages/capitalize/src/index.ts"
+      ]
+    }
   },
   "include": [
     "src/**/*"

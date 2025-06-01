@@ -1,0 +1,44 @@
+{
+  "name": "@permanence/math",
+  "version": "0.0.1",
+  "description": "Math utilities that never change",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./index.d.ts",
+      "import": "./index.js",
+      "require": "./index.cjs"
+    }
+  },
+  "main": "./index.js",
+  "module": "./index.js",
+  "types": "./index.d.ts",
+  "files": [
+    "index.js",
+    "index.d.ts",
+    "index.cjs",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "math",
+    "utilities",
+    "typescript",
+    "tree-shakeable",
+    "randomInt"
+  ],
+  "homepage": "https://github.com/yourusername/permanence#readme",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/permanence.git",
+    "directory": "packages/math"
+  },
+  "bugs": "https://github.com/yourusername/permanence/issues",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "@permanence/randomInt": "0.0.1"
+  }
+}

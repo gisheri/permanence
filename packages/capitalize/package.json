@@ -1,0 +1,43 @@
+{
+  "name": "@permanence/capitalize",
+  "version": "0.4.0",
+  "description": "Capitalize utility function that never changes",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "utilities",
+    "typescript",
+    "tree-shakeable",
+    "functional",
+    "string",
+    "capitalize",
+    "permanence"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/your-username/permanence.git",
+    "directory": "packages/capitalize"
+  }
+}
