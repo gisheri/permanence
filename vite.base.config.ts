@@ -58,7 +58,7 @@ export function createPackageConfig(config: PackageViteConfig): UserConfig {
         entry: resolve(packageDir, 'src/index.ts'),
         name: libraryName,
         fileName: 'index',
-        formats: ['es', 'cjs'],
+        formats: ['es', 'cjs', 'umd'],
       },
       rollupOptions: {
         external,
@@ -89,6 +89,6 @@ export const baseConfig = defineConfig({
     'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
   },
   esbuild: {
-    target: 'node14',
+    target: 'es2020',
   },
 });

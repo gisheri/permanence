@@ -302,6 +302,19 @@ console.log(cloned.items);   // [1, 2, { nested: false }, 3]
 - `debounce`: ~162B gzipped (247B raw)
 - `cloneDeep`: ~295B gzipped (621B raw)
 
+## Deno and Bun Usage
+
+You can use Permanence utilities directly from `npm:` specifiers in modern runtimes like Deno and Bun:
+
+```ts
+// Deno
+import { chunk } from 'npm:@permanence/array';
+import { capitalize } from 'npm:@permanence/capitalize';
+
+// Bun
+import { union } from 'npm:@permanence/union';
+```
+
 ## Development
 
 ```bash
