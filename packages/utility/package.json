@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "General utilities that never change",
   "type": "module",
+  "sideEffects": false,
   "exports": {
     ".": {
       "types": "./index.d.ts",
