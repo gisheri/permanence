@@ -59,7 +59,7 @@
     "@nx/js": "^21.1.2",
     "@nx/vite": "21.1.2",
     "@nx/web": "21.1.2",
-    "@swc-node/register": "~1.9.1",
+    "@swc-node/register": "~1.11.1",
     "@swc/core": "~1.5.7",
     "@swc/helpers": "~0.5.11",
     "@types/eslint": "^9.6.1",
