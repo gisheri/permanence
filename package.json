@@ -74,7 +74,7 @@
     "jiti": "2.4.2",
     "jsdom": "~22.1.0",
     "jsonc-eslint-parser": "^2.1.0",
-    "nx": "21.1.2",
+    "nx": "22.5.4",
     "prettier": "^3.5.3",
     "tslib": "^2.3.0",
     "typescript": "~5.7.2",
