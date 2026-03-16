@@ -5,7 +5,8 @@
   "private": true,
   "type": "module",
   "workspaces": [
-    "packages/*"
+    "packages/*",
+    "website"
   ],
   "files": [
     "dist",
@@ -33,7 +34,10 @@
     "version-packages": "nx release version",
     "publish-packages": "nx release publish",
     "release": "nx run-many -t build && nx release --skip-publish && nx release publish",
-    "generate-packages": "node scripts/generate-packages.js"
+    "generate-packages": "node scripts/generate-packages.js",
+    "docs:dev": "npm --prefix website start",
+    "docs:build": "npm --prefix website run build",
+    "docs:serve": "npm --prefix website run serve"
   },
   "keywords": [
     "utilities",
