@@ -4,4 +4,5 @@ import { createPackageConfig } from '../../vite.base.config';
 export default defineConfig(createPackageConfig({
   packageName: 'object',
   packageDir: __dirname,
+  includeTestConfig: false,
 }));

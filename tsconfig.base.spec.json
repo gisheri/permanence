@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "../../dist/out-tsc",
+    "outDir": "../../dist/packages",
     "types": [
       "vitest/globals",
       "vitest/importMeta",

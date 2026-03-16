@@ -15,6 +15,8 @@ export interface PackageViteConfig {
   external?: string[];
   /** Whether to generate TypeScript declarations (defaults to true) */
   generateDts?: boolean;
+  /** Whether to include test configuration (defaults to true) */
+  includeTestConfig?: boolean;
   /** Additional vite plugins */
   additionalPlugins?: any[];
 }
@@ -29,6 +31,7 @@ export function createPackageConfig(config: PackageViteConfig): UserConfig {
     libraryName = `Permanence${packageName.charAt(0).toUpperCase() + packageName.slice(1)}`,
     external = [],
     generateDts = true,
+    includeTestConfig = true,
     additionalPlugins = [],
   } = config;
 
@@ -61,17 +64,19 @@ export function createPackageConfig(config: PackageViteConfig): UserConfig {
         external,
       },
     },
-    test: {
-      watch: false,
-      globals: true,
-      environment: 'node',
-      include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-      reporters: ['default'],
-      coverage: {
-        reportsDirectory: `../../coverage/packages/${packageName}`,
-        provider: 'v8' as const,
+    ...(includeTestConfig && {
+      test: {
+        watch: false,
+        globals: true,
+        environment: 'node',
+        include: ['src/**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
+        reporters: ['default'],
+        coverage: {
+          reportsDirectory: `../../coverage/packages/${packageName}`,
+          provider: 'v8' as const,
+        },
       },
-    },
+    }),
   };
 }
 
